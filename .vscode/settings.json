@@ -1,0 +1,20 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.espIdfPath": "/Users/miavatanapradit/esp/esp-idf",
+  "idf.pythonInstallPath": "/opt/homebrew/opt/python@3.12/bin/python3.12",
+  "idf.openOcdConfigs": [
+    "board/esp32s3-builtin.cfg"
+  ],
+  "idf.port": "/dev/tty.usbmodem1101",
+  "idf.toolsPath": "/Users/miavatanapradit/.espressif",
+  "idf.customExtraVars": {
+    "IDF_TARGET": "esp32s3"
+  },
+  "clangd.path": "/Users/miavatanapradit/.espressif/tools/esp-clang/esp-20.1.1_20250829/esp-clang/bin/clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--query-driver=**",
+    "--compile-commands-dir=/Users/miavatanapradit/esp/Exercise 3/build"
+  ],
+  "idf.flashType": "UART"
+}
