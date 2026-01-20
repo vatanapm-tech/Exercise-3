@@ -10,6 +10,7 @@ This code turns on an LED every other time a button is pressed. \
 
 #define LED_PIN GPIO_NUM_10 // Choose your LED pin
 #define BUTTON_PIN GPIO_NUM_4 // Choose your button pin
+#define BUTTON_PIN2 GPIO_NUM_5 // Second button (Exercise 3A)
 
 
 void app_main(void) {
@@ -30,13 +31,23 @@ void app_main(void) {
    gpio_pulldown_dis(BUTTON_PIN);
    gpio_intr_disable(BUTTON_PIN);
 
+    // TO-DO: Configure Button 2 input
+   gpio_reset_pin(BUTTON_PIN2);
+   gpio_set_direction(BUTTON_PIN2, GPIO_MODE_INPUT);
+   gpio_pullup_en(BUTTON_PIN2);
+   gpio_pulldown_dis(BUTTON_PIN2);
+   gpio_intr_disable(BUTTON_PIN2);
 
    bool every_other_press = false;
+   bool second_button_pressed = false;
    bool led_state = false;
-
 
    while (1) {
    // TO-DO: Implement LED toggle and button logic here
+
+    if (gpio_get_level(BUTTON_PIN2) == 0) { // second button pressed
+           vTaskDelay(25 /portTICK_PERIOD_MS); // debounce
+
        if (gpio_get_level(BUTTON_PIN) == 0) {   // button pressed
            vTaskDelay(25 /portTICK_PERIOD_MS); // debounce
 
@@ -57,7 +68,12 @@ void app_main(void) {
            }
        }
 
-
+    } else {
+        // If second button not pressed, turn off LED
+        led_state = false;
+        gpio_set_level(LED_PIN, led_state);
+    }
        vTaskDelay(25 /portTICK_PERIOD_MS);
-   }
+
+    }
 }
