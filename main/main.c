@@ -1,3 +1,9 @@
+/*Mia Vatanapradit 1/19/2026
+This code turns on an LED every other time a button is pressed. \
+ LED is configured as an output connected to GPIO pin 10 and the \
+ button is configured as an input connected to GPIO pin 4 with an \
+ internal pull-up resistor.*/
+
 #include "freertos/FreeRTOS.h"
 #include "driver/gpio.h"
 
